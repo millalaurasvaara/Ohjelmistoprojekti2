@@ -1,0 +1,27 @@
+body {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	background-color: whitesmoke;
+}
+#vasen {
+	background-color: whitesmoke;
+	height: 100vh;
+	
+}
+
+#oikea {
+	background-color: whitesmoke;
+	height: 100vh;
+}
+
+#info {
+	background-color: antiquewhite;
+	height: 50vh;
+	border: 1em solid rosybrown;
+	border-radius: 1em;
+}
+
+#top10 {
+	background-color: whitesmoke;
+	height: 50vh;
+}
