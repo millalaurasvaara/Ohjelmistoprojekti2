@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Infotaulu</title>
+
+    <!-- Bootstrap -->
+	
+    <link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/index.css" rel="stylesheet">
+      
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	  <div class="row">
+		  <div class="col-xs-6 left-side" id="vasen">
+			  <object type="text/html" data="carousel.html" id="carouselobject">
+    		</object>
+		  </div>
+		  
+		  <div class="col-xs-6 right-side" id="oikea">
+			  <div class="col-xs-12" id="info">
+				<div class="page-header">
+				  <h1>
+				  <img src="logo.svg" width="10%" height="10%" >   Info</h1>
+				  
+				</div>
+				<h3>7.2.2050: Olemme edenneet projektissa</h3>
+			  </div>
+			  <div class="col-xs-12" id="top10">
+			    <h2>TOP7 kuskit</h2>
+  					<p>Kuskin sijoitetaan paremmuusjärjestykseen tehojen perusteella</p>            
+					<table class="table table-condensed" id="kokeilutable"></table>
+			  </div>
+              
+              <script>
+                  $.getJSON('http://myy.haaga-helia.fi/~jusju/allrounders/tophel.json', function(data) {
+                    //data is the JSON string
+                  console.log("Hei:" + data[0].name);
+				  var html = '<thead><tr><th></th><th>Kuski</th><th>Teho</th></tr></thead><tbody>'
+				  for (var i=0; i<data.length; i++){
+						html += '<tr><td>'+ (i+1) +'.</td>';
+						html += '<td>'+ data[i].name.toUpperCase()+'</td>';
+						html += '<td>'+ data[i].eff +'</td></tr>';
+				  }
+				  html +='</tbody>';
+				  $('#kokeilutable').append(html);
+					
+                  })
+              </script>
+	  
+	  <!--AJAX POST: https://www.w3schools.com/jquery/ajax_post.asp -->
+	  
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

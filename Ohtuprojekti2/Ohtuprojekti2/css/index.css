@@ -1,0 +1,87 @@
+body {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	background-color: whitesmoke;
+}
+
+#vasen {
+	background-color: whitesmoke;
+	height: 100vh;
+	
+}
+
+#oikea {
+	background-color: whitesmoke;
+	height: 100vh;
+}
+
+#info {
+	background-color: antiquewhite;
+	height: 50vh;
+	border: 1em solid rosybrown;
+	border-radius: 1em;
+}
+
+#top10 {
+	background-color: whitesmoke;
+	height: 50vh;
+}
+
+#carouselobject {
+    width: 100%;
+    height:100%;
+}
+
+.carousel-fade {
+    .carousel-inner {
+        .item {
+            transition-property: opacity !important;
+        }
+        
+        .item,
+        .active.left,
+        .active.right {
+            opacity: 0 !important;
+        }
+
+        .active,
+        .next.left,
+        .prev.right {
+            opacity: 1 !important;
+        }
+
+        .next,
+        .prev,
+        .active.left,
+        .active.right {
+            left: 0;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .carousel-control {
+        z-index: 2;
+    }
+}
+
+
+
+html, 
+body, 
+.carousel, 
+.carousel-inner, 
+.carousel-inner .item {
+    height: 100%;
+}
+
+.item:nth-child(1) {
+    background: #74C390;
+}
+
+.item:nth-child(2) {
+    background: #51BCE8;
+}
+
+.item:nth-child(3) {
+    background: #E46653;
+}
