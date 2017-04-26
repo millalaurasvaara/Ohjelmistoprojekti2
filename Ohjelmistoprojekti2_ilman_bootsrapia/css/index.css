@@ -1,0 +1,80 @@
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+body {
+	background-color: white;
+	padding: 2vh;
+	height: 98vh;
+	width: 98vw;
+}
+
+#pagecontainer {
+	width: 98%;
+	height: 98%;
+}
+#left {
+	background-color: white;
+	height: 100%;
+	width: 50%;
+	float: left;
+}
+
+#carouselobject {
+	height:100%;
+	width: 100%;
+}
+#right {
+	background-color: white;
+	height: 100%;
+	width: 50%;
+	float: right;
+}
+
+#messageboard {
+	background-color: white;
+	height: 43%;
+	border: 0.5em solid #F96C2F;
+    border-radius: 1em;
+	margin-bottom:1.5%;
+	padding: 2%;
+}
+
+img.middle {
+	vertical-align: middle;
+}
+
+#top7 {
+	background-color: white;
+	height: 44%;
+	border: 0.5em solid #F96C2F;
+    border-radius: 1em;
+	padding: 2%;
+	
+}
+
+#both_top_divs {
+	height: 78%;
+
+}
+
+#top7helsinki {
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+
+#top7vantaa {
+	width: 50%;
+	height: 100%;
+	float: right;
+}
+
+
+th, td {
+	border-bottom: 1px solid #D8D8D8;
+	font-weight:lighter;
+	padding:0.3em;
+}

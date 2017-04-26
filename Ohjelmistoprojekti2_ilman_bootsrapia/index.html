@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Infotaulu</title>
+
+	
+	<link href="css/index.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+
+	<script src="js/scriptsUser.js"></script>
+      
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+  </head>
+  <body scroll="no" style="overflow: hidden">
+
+	<div id="pagecontainer">
+		<!--The left side of the Info board -->
+		<div id="left">
+			<object type="text/html" data="carousel.html" id="carouselobject">
+			</object>
+		</div>
+		
+		<!--The right side of the Info board -->
+		<div id="right">
+		
+			<!-- Message board -->
+			<div id="messageboard">
+				<h1><img src="logo.svg" class="middle" width="15%" height="15%" >   INFO</h1>
+				<div id="messages"></div>
+			</div>
+			
+			<!-- Top 7 driver listings -->
+			<div id="top7">
+				<div id="both_top_divs">
+					<div id="top7helsinki">
+					<h3 style="align:center">TOP 7 HELSINKI</h3>
+					<table>
+						<tr>
+							<th></th>
+							<th><b>Nimi</b></th>
+							<th><b>Teho</b></th>
+							<th><b>Työpäiviä</b></th>
+						<tr>
+						<tr>
+							<th>1.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+						<tr>
+							<th>2.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+						<tr>
+							<th>3.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+						<tr>
+							<th>4.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+						<tr>
+							<th>5.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+						<tr>
+							<th>6.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+						<tr>
+							<th>7.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+					</table>
+					</div>
+					<div id="top7vantaa">
+					<h3 style="align:center">TOP 7 VANTAA</h3>
+					<table>
+						<tr>
+							<th></th>
+							<th><b>Nimi</b></th>
+							<th><b>Teho</b></th>
+							<th><b>Työpäiviä</b></th>
+						<tr>
+						<tr>
+							<th>1.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+						<tr>
+							<th>2.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+						<tr>
+							<th>3.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+						<tr>
+							<th>4.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+						<tr>
+							<th>5.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+						<tr>
+							<th>6.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+						<tr>
+							<th>7.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th>18</th>
+						</tr>
+					</table>
+					</div>
+					<p class="center"><i>Tehot ovat yksittäisen kuljettajan keskiarvoja kuluvalta kalenterikuukaudelta</i></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+  </body>
+</html>
