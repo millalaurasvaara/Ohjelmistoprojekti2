@@ -20,6 +20,6 @@
 	rootRef.on('child_added', snap =>
 		{ var viesti = snap.child("viesti").val();
 		var uutinen = snap.child("otsikko").val();
-			$("#kokonaisuus").append("<p><span><div id='viestiotsikko'>"+uutinen+"</div>" +
+			$("#messages").prepend("<p><span><div id='viestiotsikko'>"+uutinen+"</div>" +
 			"<div id='viestiketju'>" + viesti +"</div></span></p>");
 		});

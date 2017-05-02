@@ -42,6 +42,24 @@ body {
 	padding: 2%;
 }
 
+#viestiotsikko:first-of-type {
+    font-size:20px;
+}
+
+#viestiotsikko {
+	color: red!important;
+	display:inline-block;margin-right:10px;
+	width: 50px;
+	
+  
+}
+
+#viestiketju{
+	display:inline-block;
+	word-break: break-all;
+   
+}
+
 img.middle {
 	vertical-align: middle;
 }
@@ -78,3 +96,18 @@ th, td {
 	font-weight:lighter;
 	padding:0.3em;
 }
+.progress-bar-grey {
+	color:#000!important;
+	background-color:#cccccc!important;
+	border-radius:15%;
+	width: 80%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	}
+.progress-bar-orange{
+	color:#fff!important;
+	background-color:#F96C2F!important;
+	height:1.5vh;
+	border-radius:20% 10% 10% 20%;
+	}
