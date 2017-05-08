@@ -90,3 +90,79 @@
   from {opacity: .4} 
   to {opacity: 1}
 }
+
+@import "compass/css3";
+
+* {
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box; 
+	box-sizing: border-box; 
+}
+
+::-moz-selection {
+  background: #C6FF91;
+  text-shadow: none;
+}
+
+::selection {
+  background: #C6FF91;
+  text-shadow: none;
+}
+
+
+/* "Post-it" styles */
+.note-wrap {
+	padding: 1.5%; 
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 3vh;
+	vertical-align: top;
+	display: inline-block;
+	font-family: Englebert, Arial;
+	color:#4b453c;
+	background: #F7E999;
+	text-align: center;
+	box-shadow: 0 0.5vh 0.5vh rgba(0, 0, 0, 0.2);
+	-webkit-transform: rotate(2deg);
+	-moz-transform: rotate(2deg);
+	-o-transform: rotate(2deg);
+	-ms-transform: rotate(2deg);
+	transform: rotate(2deg);
+}
+
+/* Speedometer "Sakkomittari" styles */
+
+	 #needle {
+		width: 2%;
+		height: 40%;
+		background: #222;
+		border-bottom-left-radius: 50%;
+		border-bottom-right-radius: 50%;
+		border-top-left-radius: 100%;
+		border-top-right-radius: 100%;
+		display: inline-block;
+		left: 50%;
+		position: absolute;
+		top: 10%;
+	}
+	
+	@font-face {
+	   font-family: 'Let_s_go_Digital_Regular';
+	   src: url('../fonts/Let_s_go_Digital_Regular.woff');
+	}
+	
+	#meterpercentage{
+		width: 30%;
+		position:absolute;
+		text-align: center;
+		left:37%;
+		bottom:16%;
+		font-size:8vh;
+		font-family:'Let_s_go_Digital_Regular', Fallback, helvetica;
+		background-color:#222;
+		border-radius:2vh;
+		padding:0.5vh;
+		color: #dcf331;	
+	}
+

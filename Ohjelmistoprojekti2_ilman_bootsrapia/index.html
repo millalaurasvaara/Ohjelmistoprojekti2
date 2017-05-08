@@ -53,100 +53,95 @@
 							<th>1.</th>
 							<th>Jukka Jalonen</th>
 							<th>12</th>
-							<th>18</th>
+							<th>
+								<div class="progress-bar-grey">
+									<div class="progress-bar-orange" style="width:25%"></div>
+								</div>
+							</th>
 						</tr>
 						<tr>
 							<th>2.</th>
 							<th>Jukka Jalonen</th>
 							<th>12</th>
-							<th>18</th>
-						</tr>
-						<tr>
-							<th>3.</th>
-							<th>Jukka Jalonen</th>
-							<th>12</th>
-							<th>18</th>
+							<th><div class="progress-bar-grey">
+								<div class="progress-bar-orange" style="width:94%"></div>
+								</div></th>
 						</tr>
 						<tr>
 							<th>4.</th>
 							<th>Jukka Jalonen</th>
 							<th>12</th>
-							<th>18</th>
+							<th><div class="progress-bar-grey">
+								<div class="progress-bar-orange" style="width:25%"></div>
+								</div></th>
+						</tr>
+						<tr>
+							<th>4.</th>
+							<th>Jukka Jalonen</th>
+							<th>12</th>
+							<th><div class="progress-bar-grey">
+								<div class="progress-bar-orange" style="width:25%"></div>
+								</div></th>
 						</tr>
 						<tr>
 							<th>5.</th>
 							<th>Jukka Jalonen</th>
 							<th>12</th>
-							<th>18</th>
+							<th><div class="progress-bar-grey">
+								<div class="progress-bar-orange" style="width:25%"></div>
+								</div></th>
 						</tr>
 						<tr>
 							<th>6.</th>
 							<th>Jukka Jalonen</th>
 							<th>12</th>
-							<th>18</th>
+							<th><div class="progress-bar-grey">
+								<div class="progress-bar-orange" style="width:25%"></div>
+								</div></th>
 						</tr>
 						<tr>
 							<th>7.</th>
 							<th>Jukka Jalonen</th>
 							<th>12</th>
-							<th>18</th>
+							<th><div class="progress-bar-grey">
+								<div class="progress-bar-orange" style="width:25%"></div>
+								</div></th>
 						</tr>
 					</table>
 					</div>
 					<div id="top7vantaa">
-					<h3 style="align:center">TOP 7 VANTAA</h3>
-					<table>
-						<tr>
-							<th></th>
-							<th><b>Nimi</b></th>
-							<th><b>Teho</b></th>
-							<th><b>Työpäiviä</b></th>
-						<tr>
-						<tr>
-							<th>1.</th>
-							<th>Jukka Jalonen</th>
-							<th>12</th>
-							<th>18</th>
-						</tr>
-						<tr>
-							<th>2.</th>
-							<th>Jukka Jalonen</th>
-							<th>12</th>
-							<th>18</th>
-						</tr>
-						<tr>
-							<th>3.</th>
-							<th>Jukka Jalonen</th>
-							<th>12</th>
-							<th>18</th>
-						</tr>
-						<tr>
-							<th>4.</th>
-							<th>Jukka Jalonen</th>
-							<th>12</th>
-							<th>18</th>
-						</tr>
-						<tr>
-							<th>5.</th>
-							<th>Jukka Jalonen</th>
-							<th>12</th>
-							<th>18</th>
-						</tr>
-						<tr>
-							<th>6.</th>
-							<th>Jukka Jalonen</th>
-							<th>12</th>
-							<th>18</th>
-						</tr>
-						<tr>
-							<th>7.</th>
-							<th>Jukka Jalonen</th>
-							<th>12</th>
-							<th>18</th>
-						</tr>
+					<h3 style="align:center" >TOP 7 VANTAA</h3>
+					<table id="top7vantaatable">
+						
 					</table>
 					</div>
-					<p class="center"><i>Tehot ovat yksittäisen kuljettajan keskiarvoja kuluvalta kalenterikuukaudelta</i></p>
+					
+					<script>
+						$.ajaxSetup({
+							headers : {
+								'Secret' : 'B55AF471FFE583FEB96EF0788EBF9FCBA678592F70CB8508F5D43ED64A1C0E90B598C627389A913776EEE1AFEFEDE85AB82CB8AD46DF7AE3CE24072196738A9B'
+							}
+						});
+						  $.getJSON('http://188.226.139.135/AllRounders/topvan', function(data) {
+							//data is the JSON string
+						  console.log("Vantaan paras:" + data[0].name);
+						  var html = '<thead><tr><th></th><th>Kuski</th><th>Reitti</th><th>Teho</th></tr></thead><tbody>'
+						  for (var i=0; i<data.length; i++){
+								html += '<tr><td>'+ (i+1) +'.</td>';
+								html += '<td>'+ data[i].name +'</td>';
+								html += '<td>'+ data[i].route +'</td>';
+								html += '<td>'+ data[i].eff.toFixed(2) +'</td></tr>';
+						  }
+						  html +='</tbody>';
+						  $('#top7vantaatable').append(html);
+							
+						  })
+						  
+				
+              </script>
+
+					<p><i>Tehot ovat kuluvan kalenterikuukauden kuskikohtaisia keskiarvoja. Työpäiväpalkki täyttyy, kun kuski
+						on ajanut 18 työvuoroa. Taulukot päivittyvät kuun toisena päivänä. </i></p>
 				</div>
 			</div>
 		</div>

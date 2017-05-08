@@ -54,9 +54,9 @@
 	rootRef.on('child_added', snap =>
 		{ var viesti = snap.child("viesti").val();
 		var uutinen = snap.child("otsikko").val();
-    //Lisää viestin tauluun
-			$("#messages").append("<div class='panel-heading' id='viestiotsikko'>"+uutinen+"</div>" +
-			"<div class='panel-body' id='viestiketju'>" + viesti +"</div>");
-      //Lisää posto nappulan
-      $("#messages").append("<button class='btn btn-danger'  onclick=deleteClick(&quot"+snap.key+"&quot)>Delete</button>");
+    //Lisää viestin ja poistonappulan tauluun
+			$("#messages").prepend("<div class='panel-heading' id='viestiotsikko'>"+uutinen+"</div>" +
+			"<div class='panel-body' id='viestiketju'>" + viesti +"</div><button class='btn btn-danger'  onclick=deleteClick(&quot"+snap.key+"&quot)>Delete</button>");
+      //Lisää poisto nappulan
+     // $("#messages").append("<button class='btn btn-danger'  onclick=deleteClick(&quot"+snap.key+"&quot)>Delete</button>");
 		});

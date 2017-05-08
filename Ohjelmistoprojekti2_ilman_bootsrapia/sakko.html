@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Admin</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Sakko</h1><br>
+
+  <div class="row">
+
+    <div class="col-lg-4">
+      <h3>Lisää uusi sakko</h3>
+      <input type="number" step="0.01" id="sakko" placeholder="Määrä"></input><br><br>
+      <button id="submitBtn" onClick="submitClick()" class="btn btn-success ">Lähetä</button>
+    </div>
+
+    <div class="col-lg-4">
+      <h3>Sakkokatto</h3>
+      <input type="number" step="0.01" id="sKatto" placeholder="Määrä"></input><br><br>
+      <button id="submitBtn" onClick="submitKattoClick()" class="btn btn-primary ">Päivitä</button>
+      <div id="sakkoKattoTulostus">
+      </div>
+    </div>
+
+    <div class="col-lg-4" id="sakonTulostus">
+      <h3>Syötetyt sakot</h3>
+    </div>
+
+  <div class="col-lg-12" id="sakkojenTulostus">
+    <div id="summa">
+      <p>
+        Summa:
+      </p>
+      <br />
+    </div>
+    <button id="reset" onClick="resetClick()" class="btn btn-danger">Nollaa sakot</button>
+    <br />
+    <div id="pvm">
+    </div>
+  </div>
+
+
+
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyByowOf5ApuGMakV8WzFR13OFjC_8MmwxQ",
+    authDomain: "sakko-dd595.firebaseapp.com",
+    databaseURL: "https://sakko-dd595.firebaseio.com",
+    projectId: "sakko-dd595",
+    storageBucket: "sakko-dd595.appspot.com",
+    messagingSenderId: "113575412889"
+  };
+  firebase.initializeApp(config);
+
+  var fee = document.getElementById("sakko") ;
+  var summa = 0;
+
+  function submitClick() {
+  	// sakon tallennus
+  	var firebaseRef = firebase.database().ref();
+  	var sakko = parseFloat(fee.value).toFixed(2);
+        if(!isNaN(sakko)){
+        firebaseRef.child("sakkoSumma").push().set({
+        sakko: sakko
+      });
+      }
+  }
+
+// päivämäärän resetointi
+  function resetPvm() {
+
+    var date = new Date();
+    var paiva = date.getDate() + "." + (date.getMonth()+1) + "." + date.getFullYear();
+
+    var pvmfirebaseRef = firebase.database().ref("paivamaara");
+    pvmfirebaseRef.remove();
+
+    pvmfirebaseRef.push().set({
+    paiva: paiva
+    });
+  }
+
+  function resetClick() {
+	var firebaseRef = firebase.database().ref("sakkoSumma");
+
+	firebaseRef.remove();
+
+    resetPvm();
+    location.reload();
+	}
+
+
+
+  function submitKattoClick() {
+    // SAKKOKATON LISÄYS
+    var katto = document.getElementById("sKatto") ;
+
+
+
+    var kattofirebaseRef = firebase.database().ref("sakkoKatto");
+
+    var sakkokatto = parseFloat(katto.value).toFixed(2);
+        if(!isNaN(sakkokatto)){
+            // edellisen katon nollaus
+          kattofirebaseRef.remove();
+          //uuden katon lisäys
+          kattofirebaseRef.push().set({
+            katto: sakkokatto
+      });
+      }
+  }
+
+
+// tietojen haku firebasesta
+  var rootRef = firebase.database().ref().child('sakkoSumma');
+  var resetDate = firebase.database().ref().child('paivamaara');
+  var sakkoKatto = firebase.database().ref().child('sakkoKatto');
+
+	rootRef.on('child_added', snap =>
+		{ var sakko = snap.child("sakko").val();
+      console.log("Sakko " + sakko);
+
+      summa = summa + parseFloat(sakko);
+      console.log("Summa " + summa);
+
+			$("#sakonTulostus").append(sakko + "<br />");
+      $("#summa").html("Summa: " + summa.toFixed(2));
+		});
+
+  resetDate.on('child_added', snap =>
+    { var paivamaara = snap.child("paiva").val();
+    $("#pvm").html("Nollattu viimeksi: " + paivamaara);
+
+    })
+
+  sakkoKatto.on('child_added', snap =>
+  { katto = snap.child('katto').val();
+    console.log("Sakkokatto " + katto);
+
+    $("#sakkoKattoTulostus").html("Nykyinen sakkokatto: " + katto)
+  })
+
+
+
+</script>
+
+</body>
+</html>
