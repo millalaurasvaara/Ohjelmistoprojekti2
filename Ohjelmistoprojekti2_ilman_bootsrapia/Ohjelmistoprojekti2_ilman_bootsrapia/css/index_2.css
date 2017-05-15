@@ -1,0 +1,130 @@
+html {
+  font-family: sans-serif;
+  color: #504B4B;
+}
+
+body {
+	background-color: white;
+	padding: 2vh;
+	height: 98vh;
+	width: 98vw;
+}
+
+#pagecontainer {
+	width: 98%;
+	height: 98%;
+}
+#left {
+	background-color: white;
+	height: 100%;
+	width: 50%;
+	float: left;
+}
+
+#carouselobject {
+	height:100%;
+	width: 100%;
+}
+#right {
+	background-color: white;
+	height: 100%;
+	width: 50%;
+	float: right;
+}
+
+#messageboard {
+	background-color: white;
+	height: 43%;
+	border: 1vh solid #F96C2F;
+    border-radius: 2vh;
+	margin-bottom:1.5%;
+	padding: 2%;
+}
+
+#viestiotsikko:first-of-type {
+    font-size:3.5vh;
+}
+
+#viestiotsikko {
+	color: red!important;
+	display:inline-block;margin-right:1vh;
+	width: 5vh;
+	font-size:2.5vh;
+  
+}
+
+#viestiketju{
+	display:inline-block;
+	word-break: break-all;
+	font-size: 2.5vh;
+   
+}
+
+img.middle {
+	vertical-align: middle;
+}
+
+#top7 {
+	background-color: white;
+	height: 44%;
+	border: 1vh solid #F96C2F;
+    border-radius: 2vh;
+	padding: 2%;
+	
+}
+
+#both_top_divs {
+	height: 78%;
+
+}
+
+#top7helsinki {
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+
+#top7vantaa {
+	width: 50%;
+	height: 100%;
+	float: right;
+}
+
+p.comment {
+	font-size: 1.8vh;
+	color: #655B5B;
+	position: absolute;
+	bottom: 2.5vh;
+}
+
+header {
+	font-size: 7vh;
+	font-weight: 590;
+}
+	
+h3 {
+	font-size: 2.8vh;
+	margin: 0 0 1vh 0;
+	font-weight: 500;
+}
+th, td {
+	border-bottom: 1px solid #D8D8D8;
+	font-weight:lighter;
+	padding:0.7vh;
+	font-size: 2vh;
+}
+.progress-bar-grey {
+	color:#000!important;
+	background-color:#cccccc!important;
+	border-radius:10%;
+	width: 80%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	}
+.progress-bar-orange{
+	color:#fff!important;
+	background-color:#F96C2F!important;
+	height:1.5vh;
+	border-radius:10% 10% 10% 10%;
+	}

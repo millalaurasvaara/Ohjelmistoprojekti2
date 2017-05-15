@@ -1,0 +1,49 @@
+﻿<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+</head>
+<body>
+<script>
+	
+	$.ajaxSetup({
+		headers : {
+			'Secret' : 'B55AF471FFE583FEB96EF0788EBF9FCBA678592F70CB8508F5D43ED64A1C0E90B598C627389A913776EEE1AFEFEDE85AB82CB8AD46DF7AE3CE24072196738A9B'
+		}
+	});
+	$.getJSON('http://188.226.139.135/AllRounders/listall', function(json) {
+		var vantaa = [];
+		var helsinki = [];
+		var html = '';
+		for (var key in json) {
+			if (json.hasOwnProperty(key)) {
+				//add to helsinki list
+				if((json[key].route).indexOf("HEL") !== -1){
+					helsinki.push(json[key].effiency);
+				}
+				//add to vantaa list
+				if((json[key].route).indexOf("VAN") !== -1 || (json[key].route).indexOf("FISP") !== -1){
+					vantaa.push(json[key].effiency);
+					console.log(json[key].effiency)
+				}
+			}
+		}
+	
+		var sum = 0;
+		for(var i = 0; vantaa.length > i; i++){
+			sum += vantaa[i];
+		}
+		console.log("vantaa "+sum/(vantaa.length));
+		
+		for(var i = 0; helsinki.length > i; i++){
+			sum += helsinki[i];
+		}
+		console.log("helsiki "+sum/(helsinki.length));
+	
+
+
+	});
+
+ </script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Infotaulu</title>
+
+	
+	<link href="css/index_2.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+
+	<script src="js/scriptsUser.js"></script>
+      
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+  </head>
+  <body scroll="no" style="overflow: hidden">
+
+	<div id="pagecontainer">
+		<!--The left side of the Info board -->
+		<div id="left">
+			<object type="text/html" data="carousel.html" id="carouselobject">
+			</object>
+		</div>
+		
+		<!--The right side of the Info board -->
+		<div id="right">
+		
+			<!-- Message board -->
+			<div id="messageboard">
+				<header><img src="logo.svg" class="middle" width="15%" height="15%" >   INFO</header>
+				<div id="messages"></div>
+			</div>
+			
+			<!-- Top 7 driver listings -->
+			<div id="top7">
+				<div id="both_top_divs">
+					<div id="top7helsinki">
+					<h3 style="align:center">TOP 7 HELSINKI</h3>
+					<table id="top7helsinkitable">
+						
+					</table>
+					</div>
+					
+					<div id="top7vantaa">
+					<h3 style="align:center" >TOP 7 VANTAA</h3>
+					<table id="top7vantaatable">
+						
+					</table>
+					</div>
+					
+					<script>
+						$.ajaxSetup({
+							headers : {
+								'Secret' : 'B55AF471FFE583FEB96EF0788EBF9FCBA678592F70CB8508F5D43ED64A1C0E90B598C627389A913776EEE1AFEFEDE85AB82CB8AD46DF7AE3CE24072196738A9B'
+							}
+						});
+						  $.getJSON('http://188.226.139.135/AllRounders/tophel', function(data) {
+							//data is the JSON string
+						  console.log("Helsingin paras:" + data[0].name);
+						  console.log("Helsingin parhaan työpäivät:" +data[0].work_days);
+						  
+						  var html = '<thead><tr><th></th><th>Kuski</th><th>Teho</th><th>Työpäiviä</th></tr></thead><tbody>'
+						  for (var i=0; i<data.length; i++){
+								var workdaysMax = 18; //vaaditut tehdyt työpäivät, jotta palkki saavuttaisi 100%
+								var workdaysNow = data[i].work_days; //työntekijän tämänhetkiset kertyneet työpäivät
+								var percentage = workdaysNow/workdaysMax;
+								if(percentage>=1){
+									percentage=1;
+									}
+								html += '<tr><td>'+ (i+1) +'.</td>';
+								html += '<td>'+ data[i].name +'</td>';
+								html += '<td>'+ data[i].avg_eff.toFixed(2) +'</td>';
+								html += '<td><div class="progress-bar-grey"><div class="progress-bar-orange" style="width:'+ percentage*100 +'%"></div></td></tr>';
+						  }
+						  html +='</tbody>';
+						  $('#top7helsinkitable').append(html);
+							
+						  })
+					</script>
+					<script>
+						$.ajaxSetup({
+							headers : {
+								'Secret' : 'B55AF471FFE583FEB96EF0788EBF9FCBA678592F70CB8508F5D43ED64A1C0E90B598C627389A913776EEE1AFEFEDE85AB82CB8AD46DF7AE3CE24072196738A9B'
+							}
+						});
+						  $.getJSON('http://188.226.139.135/AllRounders/topvan', function(data) {
+							//data is the JSON string
+						  console.log("Vantaan paras:" + data[0].name);
+						  
+						  var html = '<thead><tr><th></th><th>Kuski</th><th>Teho</th><th>Työpäiviä</th></tr></thead><tbody>'
+						  for (var i=0; i<data.length; i++){
+								var workdaysMax = 18; //vaaditut tehdyt työpäivät, jotta palkki saavuttaisi 100%
+								var workdaysNow = data[i].work_days; //työntekijän tämänhetkiset kertyneet työpäivät
+								var percentage = workdaysNow/workdaysMax;
+								if(percentage>=1){
+									percentage=1;
+									}
+								html += '<tr><td>'+ (i+1) +'.</td>';
+								html += '<td>'+ data[i].name +'</td>';
+								html += '<td>'+ data[i].avg_eff.toFixed(2) +'</td>';
+								html += '<td><div class="progress-bar-grey"><div class="progress-bar-orange" style="width:'+ percentage*100 +'%"></div></td></tr>';
+						  }
+						  html +='</tbody>';
+						  $('#top7vantaatable').append(html);
+							
+						  })
+              </script>
+
+					<p class="comment">Tehot ovat kuluvan kalenterikuukauden kuskikohtaisia keskiarvoja.
+					</br>Työpäiväpalkki täyttyy, kun kuskion ajanut 18 työvuoroa. 
+					</br>Taulukot päivittyvät kuun toisena päivänä.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+  </body>
+</html>
